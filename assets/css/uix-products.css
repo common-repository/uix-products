@@ -1,0 +1,1325 @@
+/*
+
+	 Uix Products
+	 Plugin URI: https://uiux.cc/wp-plugins/uix-products/
+	 Author: UIUX Lab
+	 Author URI: https://uiux.cc
+	 License: GPLv2 or later
+
+	
+	TABLE OF CONTENTS
+	---------------------------
+	
+	1. Products Container  
+	2. Products Tiles   
+	3. Products Categories  
+	4. Products Pagination       
+	5. Products for Widget  
+	6. Custom Single Page   
+	7. Custom Slideshow
+
+*/
+
+/* ====================================================== 
+   1. Products Container   
+/* ====================================================== */
+.uix-products-section {
+	margin: 0 auto;
+	max-width: 1170px;
+	padding: 0 15px;
+	position: relative;
+
+}
+
+@media all and (max-width: 768px) {
+	.uix-products-section {
+        width: 100%;
+    }	
+}
+
+
+
+/* ====================================================== 
+   2. Products Tiles   
+/* ====================================================== */
+.uix-products-container {
+	position: relative;
+    margin: -2.5em 0 0 -2.5em;
+}
+
+
+.uix-products-container .products-tiles {
+	padding-right: 2.5em;
+	padding-left: 2.5em;
+}
+
+.uix-products-container:after,
+.uix-products-container:before {
+    display: table;
+    content: "";
+    line-height: 0;
+	clear: both;
+}
+
+.uix-products-container .uix-products-item {
+    -moz-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    position: relative;
+    width: calc(33.3% - 2.5em);
+    margin: 1.5em 0 2.5em 2.5em;
+    float: left;
+	font-size: 14px;
+	padding-bottom: 1em;
+	
+}
+
+
+
+.uix-products-container.small .uix-products-item {
+    width: calc(24.99999% - 2.5em);
+}
+
+.uix-products-container.large .uix-products-item {
+    width: calc(49.99999% - 2.5em);
+}
+
+
+.uix-products-item .cover {
+	position: relative;
+}
+
+.uix-products-item .cover img {
+	width: 100%;
+}
+
+.uix-products-item .cover:before {
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -ms-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+	background: rgba(255,255,255,0);
+	display: block;
+	content: '';
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+}
+
+.uix-products-item:hover .cover:before {
+	background: rgba(255,255,255,.95);
+}
+
+
+.uix-products-item .title,
+.uix-products-item .category {
+	margin: 0;
+	padding: 0;
+}
+.uix-products-item .title {
+	position: relative;
+	padding-top: .625em;
+	display: block;
+	width: calc( 100% - 50px );
+	font-weight: 400;
+	font-size: 1em;
+	line-height: 1.5;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+.uix-products-item .desc {
+	filter:alpha(opacity=0);  
+	-moz-opacity: 0;   
+	opacity: 0;
+	position: absolute;
+	z-index: 3;
+	padding: 1em;
+	/* Vertical Center */
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);	
+}
+
+.uix-products-item:hover .desc{
+	filter:alpha(opacity=75);  
+	-moz-opacity: 0.75;   
+	opacity: 0.75;
+}
+
+
+.uix-products-item .category {
+	font-size: 0.71428571428em;
+	line-height: 1.625;
+	display: inline-block;
+	position: absolute;
+	bottom: 1.5em;
+	right: 0;
+	z-index: 3;
+	-webkit-border-radius: 25px; 
+	-moz-border-radius: 25px; 
+	border-radius: 25px;
+	padding: .1em 0;
+	font-weight: 300;
+	filter:alpha(opacity=40);  
+	-moz-opacity: 0.4;   
+	opacity: 0.4;
+	
+}
+
+
+.uix-products-item .image {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    outline: 0;
+    background: #ddd;
+	border: 1px solid #E7E7E7;
+}
+
+
+
+
+@media screen and (max-width: 1280px) {
+	
+    .uix-products-container {
+        margin: -1.25em 0 0 -1.25em;
+    }
+
+    .uix-products-container .uix-products-item {
+        width: calc(33.3% - 1.25em);
+        margin: 1.25em 0 0 1.25em;
+    }
+
+    .uix-products-container.small .uix-products-item {
+        width: calc(24.99999% - 1.25em);
+        margin: 1.25em 0 0 1.25em;
+    }
+
+    .uix-products-container.large .uix-products-item {
+        width: calc(49.99999% - 1.25em);
+        margin: 1.25em 0 0 1.25em;
+    }
+}
+
+@media screen and (max-width: 980px) {
+
+    .uix-products-container {
+        margin: -2.5em 0 0 -2.5em;
+    }
+
+    .uix-products-container .uix-products-item ,
+	.uix-products-container.small .uix-products-item,
+	.uix-products-container.large .uix-products-item {
+        width: calc(50% - 2.5em);
+        margin: 2.5em 0 0 2.5em;
+    }
+}
+
+@media screen and (max-width: 736px) {
+
+    .uix-products-container {
+        margin: -1.25em 0 0 -1.25em;
+    }
+
+    .uix-products-container .uix-products-item,
+	.uix-products-container.small .uix-products-item,
+	.uix-products-container.large .uix-products-item {
+        width: calc(50% - 1.25em);
+        margin: 1.25em 0 0 1.25em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .uix-products-container {
+        margin: 0;
+		width: 100%;
+    }
+
+    .uix-products-container .uix-products-item,
+	.uix-products-container.small .uix-products-item,
+	.uix-products-container.large .uix-products-item {
+        width: 100%;
+        margin: 1.25em 0 0 0;
+    }
+}
+
+
+
+/* Filter or Masonry (Need muuri.js )*/
+/* You can directly use uix-core-grid__col-* to control the width of the item */
+.uix-products-container[data-show-type*="filter"] > .uix-products-tiles,
+.uix-products-container[data-show-type*="masonry"] > .uix-products-tiles {
+    position: relative;
+  /* required */
+    overflow: inherit;
+    width: calc(100% + 15px);
+}
+
+.uix-products-container[data-show-type*="filter"] > .uix-products-tiles .uix-products-item,
+.uix-products-container[data-show-type*="masonry"] > .uix-products-tiles .uix-products-item {
+  /* required */
+    display: block;
+    position: absolute;
+    z-index: 1;
+}
+
+.uix-products-container[data-show-type*="filter"] > .uix-products-tiles .uix-products-item > div,
+.uix-products-container[data-show-type*="masonry"] > .uix-products-tiles .uix-products-item > div {
+    position: relative;
+    width: calc(100% - 15px);
+    height: 100%;
+}
+
+.uix-products-container[data-show-type*="filter"] > .uix-products-tiles .uix-products-item.muuri-item-dragging,
+.uix-products-container[data-show-type*="masonry"] > .uix-products-tiles .uix-products-item.muuri-item-dragging {
+    z-index: 3;
+}
+
+.uix-products-container[data-show-type*="filter"] > .uix-products-tiles .uix-products-item.muuri-item-releasing,
+.uix-products-container[data-show-type*="masonry"] > .uix-products-tiles .uix-products-item.muuri-item-releasing {
+    z-index: 2;
+}
+
+.uix-products-container[data-show-type*="filter"] > .uix-products-tiles .uix-products-item.muuri-item-hidden,
+.uix-products-container[data-show-type*="masonry"] > .uix-products-tiles .uix-products-item.muuri-item-hidden {
+    z-index: 0;
+}
+
+
+
+/* ====================================================== 
+   3. Products Categories            
+/* ====================================================== */
+.uix-products-cat-list {
+    clear: both;
+    margin-bottom: 25px;
+    padding: .5em 0 1.5em;
+}
+
+.uix-products-cat-list:before,
+.uix-products-cat-list:after {
+    display: table;
+    content: "";
+    line-height: 0;
+	clear: both;
+}
+
+.uix-products-cat-list:after {
+    clear: both;
+}
+
+.uix-products-cat-list ul,
+.uix-products-cat-list li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.uix-products-cat-list li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.uix-products-cat-list li ul.children {
+    float: left;
+}
+
+.uix-products-cat-list li a {
+	filter:alpha(opacity=65);  
+	-moz-opacity: 0.65;   
+	opacity: 0.65;
+}
+
+.uix-products-cat-list li a:hover,
+.uix-products-cat-list li.current-cat>a {
+ 	filter:alpha(opacity=100);  
+	-moz-opacity: 1;   
+	opacity: 1;
+}
+
+/* ====================================================== 
+   4. Products Pagination             
+/* ====================================================== */
+.uix-products-pagination-container ul, 
+.uix-products-pagination-single ul {
+	list-style: none;
+}
+
+
+.uix-products-pagination-container {
+    margin-top: 3.25em;
+}
+
+.uix-products-pagination-container:before,
+.uix-products-pagination-container:after {
+    display: table;
+    content: "";
+    line-height: 0;
+	clear: both;
+}
+
+.uix-products-pagination-container:after {
+    clear: both;
+}
+
+.uix-products-pagination-container li {
+    display: inline-block;
+	*display: inline;
+}
+
+.uix-products-pagination-container li a,
+.uix-products-pagination-container li.active > span,
+.uix-products-pagination-container li > span.current {
+    display: inline-block;
+    width: 3.54545454545454em;
+    height: 3.54545454545454em;
+    padding-top: 4px;
+    text-align: center;
+    background: none;
+    border: none;
+    color: #333;
+    font-variant-ligatures: common-ligatures; /*Ligatures and contextual forms are ways of combining glyphs to produce more harmonized forms.*/
+    margin-bottom: 0;
+    font-size: 1em;
+    line-height: 3.25;
+    margin-top: 0;
+    margin-bottom: 2.36363636363636em;
+}
+
+.uix-products-pagination-container li a:hover {
+    background: #efefef;
+    color: #232323;
+}
+
+.uix-products-pagination-container li.active a,
+.uix-products-pagination-container li.active > span {
+    color: #989898;
+	font-style: italic;
+}
+
+.uix-products-pagination-container li.active a:hover {
+    background: #e7e7e7;
+    color: #232323;
+}
+
+.uix-products-pagination-single ul .previous {
+    float: left;
+    margin: 0;
+}
+
+.uix-products-pagination-single ul .next {
+    float: right;
+    margin: 0;
+}
+
+/* Only "next" and "previous" button */
+.page-numbers-hide {
+	display: none !important;
+}
+
+
+/* ====================================================== 
+   5. Products for Widget          
+/* ====================================================== */
+.uix-products-widget:after,
+.uix-products-widget:before {
+    display: table;
+    content: "";
+    line-height: 0;
+	clear: both;
+}
+
+.uix-products-widget,
+.uix-products-widget .uix-products-recent-item {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.3;
+}
+
+.uix-products-widget .uix-products-recent-item {
+    border: none;
+    display: block;
+    margin-bottom: 1em;
+    display: block;
+    height: auto;
+    position: relative;
+}
+
+.uix-products-widget .uix-products-recent-item:after {
+	display: block;
+	content: '';
+	clear: both;
+	border-bottom: 1px dashed #E6E6E6;
+}
+
+.uix-products-widget .uix-products-recent-item .item-thumb {
+    float: left;
+    width: 39.4%;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    padding: 2px;
+    display: block;
+    text-align: left;
+}
+
+.uix-products-widget .uix-products-recent-item .item-thumb img {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+.uix-products-widget .uix-products-recent-item .item-info {
+    float: left;
+    width: 50%;
+}
+
+.uix-products-widget .uix-products-recent-item .item-info.no-image {
+    float: none;
+    width: 100%;
+}
+
+
+.uix-products-widget .uix-products-recent-item .item-title {
+  
+}
+
+.uix-products-widget .uix-products-recent-item .item-date {
+    filter: alpha(opacity=40);
+    -moz-opacity: 0.4;
+    opacity: 0.4;
+    font-size: 0.8571428571em;
+    padding: .7em 0;
+}
+
+/* ====================================================== 
+   6. Custom Single Page   
+/* ====================================================== */
+.uix-products-single-main,
+.uix-products-single-side {
+    padding: 2em 0;
+	font-size: 14px;
+}
+
+.uix-products-single-main {
+    width: 70%;
+    float: left;
+    overflow: hidden;
+}
+
+.uix-products-single-side {
+    width: 25%;
+    float: right;
+    overflow: hidden;
+}
+
+.uix-products-single-side p {
+	margin: .2em 0 .5em;
+	font-size: 0.8571428571em;
+}
+
+.uix-products-single-side h1 {
+	font-size: 1.5em;
+	line-height: 1.5;
+}
+
+.uix-products-single-side .title {
+	display: block;
+}
+.uix-products-single-side .title:after {
+	content: ':';
+	display: inline-block;
+	padding-left: 2px;
+}
+
+
+.uix-products-single-side:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+
+.uix-products-button {
+    border: 3px solid #333;
+    color: 333;
+    padding: .2em 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: .5em .2em .2em;
+}
+
+
+/* ====================================================== 
+   7. Custom Slideshow      
+/* ====================================================== */
+/*
+	
+	TABLE OF CONTENTS
+	---------------------------
+	
+     1. Initialize the slider style
+     2. Pagination dots
+     3. Next/Prev buttons
+     4. Link Buttons
+
+*/
+/*
+ ---------------------------
+ 1. Initialize the slider style
+ ---------------------------
+ */
+
+.uix-products-slideshow__wrapper {
+    position: relative;
+    background: #333;
+}
+/* Prevent content overflow*/
+.uix-products-slideshow {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+/* Loading */
+.uix-products-slideshow.is-loaded::after,
+.uix-products-slideshow.is-loaded .uix-products-slideshow__inner .uix-products-slideshow__item img {
+    -moz-transition-delay: 1.2s;
+    -o-transition-delay: 1.2s;
+    -webkit-transition-delay: 1.2s;
+    transition-delay: 1.2s;
+}
+
+.uix-products-slideshow::after {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100px;
+    height: 16px;
+    margin-left: -50px;
+    left: 50%;
+    top: 50%;
+    content: '';
+    -moz-transition: all 1.2s ease;
+    -o-transition: all 1.2s ease;
+    -webkit-transition: all 1.2s ease;
+    transition: all 1.2s ease;
+    background: url("data:image/gif;base64,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") no-repeat left top;
+}
+
+.uix-products-slideshow.is-loaded::after {
+    opacity: 0;
+}
+
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item img {
+    opacity: 0;
+}
+.uix-products-slideshow.is-loaded .uix-products-slideshow__inner .uix-products-slideshow__item img {
+    opacity: 1;
+}
+
+
+/* Inner */
+.uix-products-slideshow .uix-products-slideshow__inner {
+	/* Don't set overflow to "hidden"*/
+	position: relative;
+	z-index: 1;
+	height: 100%;
+}
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	opacity: 0;
+	/* Javascript will automatically get this value, please do not delete*/
+    -moz-transition: all 1.2s ease;
+    -o-transition: all 1.2s ease;
+    -webkit-transition: all 1.2s ease;
+    transition: all 1.2s ease;
+	
+}
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item .uix-products-slideshow__txt {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+    -webkit-transform: translate(-50%, -50%) !important;
+    -ms-transform: translate(-50%, -50%) !important;
+	transform: translate(-50%, -50%) !important;
+	z-index: 15;
+    -moz-transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    -o-transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    -webkit-transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+	margin-top: 100px;
+	opacity: 0;
+}
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item .uix-products-slideshow__txt h3 {
+	margin-bottom: 0;
+    font-size: 30px;
+}
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item .uix-products-slideshow__txt {
+	width: 1140px;
+    max-width: calc( 100% - 70px);
+	position: absolute;
+	left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+	padding-left: 15px;
+	padding-right: 15px;
+    text-align: center;
+	/* Prevent layers from hiding the underlying elements*/
+	pointer-events: none;
+}
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item .uix-products-slideshow__txt > div {
+	pointer-events: auto;
+}
+
+@media all and (min-width: 1430px) {
+    .uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item .uix-products-slideshow__txt {
+        width: 1278px;
+    }
+} 
+
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item img {
+	width: 100%;
+    pointer-events: none;
+}
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item.leave {
+	opacity: 0;
+}
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item.leave .uix-products-slideshow__txt {
+	margin-top: 100px;
+	opacity: 0;
+}
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item.is-active {
+	/* Allow button clicks*/
+	z-index: 2;
+	opacity: 1;
+}
+.uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item.is-active .uix-products-slideshow__txt {
+	margin-top: 0;
+	opacity: 1;
+    -moz-transition-delay: 1.2s;
+    -o-transition-delay: 1.2s;
+    -webkit-transition-delay: 1.2s;
+    transition-delay: 1.2s;
+    
+}
+
+/* Tests native CSS3 and HTML5 features are available*/
+/*---- Effect: Scale ----*/
+/* --------------------------- */
+.uix-products-slideshow.uix-products-slideshow--eff-scale .uix-products-slideshow__inner .uix-products-slideshow__item {
+	opacity: 0;
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+	transform: scale(0.8);
+}
+.uix-products-slideshow.uix-products-slideshow--eff-scale .uix-products-slideshow__inner .uix-products-slideshow__item.prev {
+    -webkit-transform: translateX(200px) scale(0.8);
+    -ms-transform: translateX(200px) scale(0.8);
+	transform: translateX(200px) scale(0.8);
+}
+.uix-products-slideshow.uix-products-slideshow--eff-scale .uix-products-slideshow__inner .uix-products-slideshow__item.next {
+    -webkit-transform: translateX(-200px) scale(0.8);
+    -ms-transform: translateX(-200px) scale(0.8);
+	transform: translateX(-200px) scale(0.8);
+}
+.uix-products-slideshow.uix-products-slideshow--eff-scale .uix-products-slideshow__inner .uix-products-slideshow__item.leave {
+	opacity: 0;
+}
+.uix-products-slideshow.uix-products-slideshow--eff-scale .uix-products-slideshow__inner .uix-products-slideshow__item.leave.prev {
+    -webkit-transform: translateX(-200px) scale(0.8);
+    -ms-transform: translateX(-200px) scale(0.8);
+	transform: translateX(-200px) scale(0.8);
+}
+.uix-products-slideshow.uix-products-slideshow--eff-scale .uix-products-slideshow__inner .uix-products-slideshow__item.leave.next {
+    -webkit-transform: translateX(200px) scale(0.8);
+    -ms-transform: translateX(200px) scale(0.8);
+	transform: translateX(200px) scale(0.8);
+}
+.uix-products-slideshow.uix-products-slideshow--eff-scale .uix-products-slideshow__inner .uix-products-slideshow__item.is-active {
+    -moz-transition-delay: 1.2s;
+    -o-transition-delay: 1.2s;
+    -webkit-transition-delay: 1.2s;
+    transition-delay: 1.2s;
+	opacity: 1;
+}
+.uix-products-slideshow.uix-products-slideshow--eff-scale .uix-products-slideshow__inner .uix-products-slideshow__item.is-active.prev {
+    -webkit-transform: translateX(0) scale(1);
+    -ms-transform: translateX(0) scale(1);
+	transform: translateX(0) scale(1);
+}
+.uix-products-slideshow.uix-products-slideshow--eff-scale .uix-products-slideshow__inner .uix-products-slideshow__item.is-active.next {
+    -webkit-transform: translateX(0) scale(1);
+    -ms-transform: translateX(0) scale(1);
+	transform: translateX(0) scale(1);
+}
+
+
+/*---- Effect: Slide ----*/
+/* --------------------------- */
+.uix-products-slideshow.uix-products-slideshow--eff-slide .uix-products-slideshow__inner .uix-products-slideshow__item {
+    opacity: 1;
+    z-index: 3;
+}
+
+
+.uix-products-slideshow.uix-products-slideshow--eff-slide .uix-products-slideshow__inner .uix-products-slideshow__item:not(.leave):not(.is-active) {
+    -moz-transition: none;
+    -o-transition: none;
+    -webkit-transition: none;
+    transition: none;
+    z-index: 1;
+}
+
+
+.uix-products-slideshow.uix-products-slideshow--eff-slide .uix-products-slideshow__inner .uix-products-slideshow__item.leave.prev {
+	-webkit-animation: uix-products-slideshow-anim--slideLeftLeave 1.2s ease 1 forwards;
+	animation: uix-products-slideshow-anim--slideLeftLeave 1.2s ease 1 forwards;
+}
+.uix-products-slideshow.uix-products-slideshow--eff-slide .uix-products-slideshow__inner .uix-products-slideshow__item.leave.next {
+	-webkit-animation: uix-products-slideshow-anim--slideRightLeave 1.2s ease 1 forwards;
+	animation: uix-products-slideshow-anim--slideRightLeave 1.2s ease 1 forwards;
+}
+.uix-products-slideshow.uix-products-slideshow--eff-slide .uix-products-slideshow__inner .uix-products-slideshow__item.is-active {
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+.uix-products-slideshow.uix-products-slideshow--eff-slide .uix-products-slideshow__inner .uix-products-slideshow__item.is-active.prev {
+	-webkit-animation: uix-products-slideshow-anim--slideRight 1.2s ease 1 forwards;
+	animation: uix-products-slideshow-anim--slideRight 1.2s ease 1 forwards;
+    
+}
+.uix-products-slideshow.uix-products-slideshow--eff-slide .uix-products-slideshow__inner .uix-products-slideshow__item.is-active.next {
+	-webkit-animation: uix-products-slideshow-anim--slideLeft 1.2s ease 1 forwards;
+	animation: uix-products-slideshow-anim--slideLeft 1.2s ease 1 forwards;
+}
+
+@-webkit-keyframes uix-products-slideshow-anim--slideRightLeave {
+	0%   { 
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+	100% {
+        -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+}
+@keyframes uix-products-slideshow-anim--slideRightLeave {
+	0%   { 
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+	100% {
+        -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+}
+
+
+@-webkit-keyframes uix-products-slideshow-anim--slideRight {
+	0%   { 
+        -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+		transform: translateX(100%);
+        z-index: 2;
+	}
+	100% {
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+@keyframes uix-products-slideshow-anim--slideRight {
+	0%   { 
+        -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+		transform: translateX(100%);
+        z-index: 2;
+	}
+	100% {
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+
+
+@-webkit-keyframes uix-products-slideshow-anim--slideLeftLeave {
+	0%   { 
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+	100% {
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+		transform: translateX(-100%);
+	}
+}
+@keyframes uix-products-slideshow-anim--slideLeftLeave {
+	0%   { 
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+	100% {
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+		transform: translateX(-100%);
+	}
+}
+
+
+@-webkit-keyframes uix-products-slideshow-anim--slideLeft {
+	0%   { 
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+		transform: translateX(-100%);
+        z-index: 2;
+	}
+	100% {
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+@keyframes uix-products-slideshow-anim--slideLeft {
+	0%   { 
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+		transform: translateX(-100%);
+        z-index: 2;
+	}
+	100% {
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+}
+
+
+@media all and (max-width: 768px) {
+    .uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item .uix-products-slideshow__txt h3 {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+    .uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item .uix-products-slideshow__txt p {
+        font-size: 14px;
+        margin-bottom: 0;
+        padding-bottom: 0;    
+    }
+    .uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item .uix-products-slideshow__txt h3, 
+    .uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item .uix-products-slideshow__txt p {
+        line-height: 1.2;
+    }
+}
+
+
+/*
+ ---------------------------
+ 2. Pagination dots
+ ---------------------------
+ */
+.uix-products-slideshow__pagination {
+	position: absolute;
+    width: 100%;
+    -webkit-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+	transform: translateY(-40px);
+	z-index: 2;
+}
+.uix-products-slideshow__pagination ul {
+	list-style: none;
+	left: 0;
+	bottom: 0;
+	font-size: 0;
+	/*Fighting the Space Between Inline Block Elements*/
+	display: block;
+	width: 100%;
+	text-align: center;
+	/*require*/
+	position: relative;
+    -webkit-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+	transform: translateY(10px);
+}
+.uix-products-slideshow__pagination ul li {
+	/*Fighting the Space Between Inline Block Elements*/
+	display: inline-block;
+	/*require*/
+	margin: 0 5px;
+}
+.uix-products-slideshow__pagination ul li a {
+	width: 12px;
+	height: 12px;
+	display: block;
+	box-shadow: 0px 3px 22px 0px rgba(0, 0, 0, 0.45);
+	background: rgba(255, 255, 255, 0.6);
+	cursor: pointer;
+	text-indent: -9999px;
+	border-radius: 20px;
+	-moz-transition: .1s ease-in-out; 
+	-o-transition: .1s ease-in-out;
+	-webkit-transition: .1s ease-in-out; 
+	transition: .1s ease-in-out; 
+}
+.uix-products-slideshow__pagination ul li a:hover, 
+.uix-products-slideshow__pagination ul li a.is-active {
+	background: white;
+	width: 25px;
+}
+
+
+/*
+ ---------------------------
+ 3. Next/Prev buttons
+ ---------------------------
+ */
+.uix-products-slideshow__arrows {
+	position: absolute;
+    top: 50%;
+    background: #f00;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	z-index: 3;
+    width: 100%;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+	-moz-transition: .1s ease-in-out; 
+	-o-transition: .1s ease-in-out;
+	-webkit-transition: .1s ease-in-out; 
+	transition: .1s ease-in-out;
+
+}
+
+.uix-products-slideshow__wrapper:hover .uix-products-slideshow__arrows {
+    opacity: 0.9;
+    -moz-opacity: 0.9;
+    filter: alpha(opacity=90);
+}
+
+
+.uix-products-slideshow__arrows a {
+	width: 13px;
+	height: 19px;
+	position: absolute;
+    display: inline-block;
+	-moz-transition: .1s ease-in-out; 
+	-o-transition: .1s ease-in-out;
+	-webkit-transition: .1s ease-in-out; 
+	transition: .1s ease-in-out;
+	text-align: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+}
+.uix-products-slideshow__arrows .uix-products-slideshow__arrows--prev {
+	left: 15px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAATCAMAAAB86XelAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABIUExURQAAAP39/fz8/P39/fz8/P39/f////////////////////z8/P39/f39/f////z8/Pz8/P39/f////39/f////39/fz8/P39/YN5p+wAAAAXdFJOUwC067LvpQMUAQIT7bqwEm/xrQ+YP6ZoKfy0MwAAAE1JREFUGNOtzTkSgDAMQ1Gzx2xh1/1vCo6Dx/T87o0KEeX4asniFaORJ8CYgHJTVAmzR68oBMMHnUOtoCjAkZ/C6TcKzb9cXgltEu4PbhnzB8RDVJJJAAAAAElFTkSuQmCC);
+}
+.uix-products-slideshow__arrows .uix-products-slideshow__arrows--prev.is-disabled {
+	visibility: hidden;
+}
+.uix-products-slideshow__arrows .uix-products-slideshow__arrows--next {
+	right: 15px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAATCAMAAAB86XelAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABIUExURQAAAP39/fz8/P39/fz8/P39/f////////////////////z8/P39/f39/f////z8/Pz8/P39/f////39/f////39/fz8/P39/YN5p+wAAAAXdFJOUwC067LvpQMUAQIT7bqwEm/xrQ+YP6ZoKfy0MwAAAEtJREFUGNOdyUkSgCAQBMFxA1Hcl/7/TwUiBluO1i2jRMTcTnLGY3MEYFLuNZhzYqMcCo6RldIWbD88o7Dwu3pC9x9iV0KaLwKPjAcf0wfEe8y+XQAAAABJRU5ErkJggg==);
+}
+.uix-products-slideshow__arrows .uix-products-slideshow__arrows--next.is-disabled {
+	visibility: hidden;
+}
+
+
+
+/*
+ ---------------------------
+ 4. Link Buttons
+ ---------------------------
+ */
+.uix-products-slideshow-custom-button {
+	display: inline-block;
+	margin: 1em 0;
+	padding: .5em 1.25em;
+	background-color: transparent;
+	color: inherit;
+	vertical-align: middle;
+	position: relative;
+	z-index: 1;
+	border: 2px solid #fff;
+	font-size: 14px;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	outline: none;
+	-moz-transition: .1s ease-in-out; 
+	-o-transition: .1s ease-in-out;
+	-webkit-transition: .1s ease-in-out; 
+	transition: .1s ease-in-out;
+    -webkit-border-radius: 25px; 
+    -moz-border-radius: 25px; 
+    border-radius: 25px;
+
+}
+
+.uix-products-slideshow-custom-button:hover {
+    opacity: 0.7;
+    -moz-opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+/* small */
+.uix-products-slideshow-custom-button.bsize-s {
+	margin: .6em 0 !important;
+	padding: .3em .8em !important;
+    font-size: 12px !important;
+}
+
+/* medium */
+.uix-products-slideshow-custom-button.bsize-m {
+	margin: .8em 0 !important;
+	padding: .4em 1em !important;
+    font-size: 14px !important;
+}
+
+/* large */
+.uix-products-slideshow-custom-button.bsize-l {
+	margin: 1em 0 !important;
+	padding: .5em 1.25em !important;
+    font-size: 16px !important;
+}
+
+/* extra large */
+.uix-products-slideshow-custom-button.bsize-xl {
+	margin: 1.2em 0 !important;
+	padding: .7em 1.5em !important;
+    font-size: 16px !important;
+}
+
+
+
+
+
+/*
+
+	 Uix Products  (RTL)
+	 Plugin URI: https://uiux.cc/wp-plugins/uix-products/
+	 Author: UIUX Lab
+	 Author URI: https://uiux.cc
+	 License: GPLv2 or later
+
+	
+	TABLE OF CONTENTS
+	---------------------------
+	
+	1. Products Tiles   
+	2. Products Categories  
+	3. Products Pagination       
+	4. Products for Widget  
+	5. Custom Single Page   
+	6. Custom Slideshow
+
+*/
+
+
+/* ====================================================== 
+   1. Products Tiles   
+/* ====================================================== */
+.rtl .uix-products-container {
+    margin: -2.5em -2.5em 0 0;
+}
+
+
+.rtl .uix-products-container .uix-products-item {
+    margin: 1.5em 2.5em 2.5em 0;
+    float: right;
+	
+}
+
+
+.rtl .uix-products-item .cover:before {
+    left: auto;
+	right: 0;
+}
+
+@media screen and (max-width: 1280px) {
+	
+    .rtl .uix-products-container {
+        margin: -1.25em -1.25em 0 0;
+    }
+
+    .rtl .uix-products-container .uix-products-item {
+        margin: 1.25em 1.25em 0 0;
+    }
+
+    .rtl .uix-products-container.small .uix-products-item {
+        margin: 1.25em 1.25em 0 0;
+    }
+
+    .rtl .uix-products-container.large .uix-products-item {
+        margin: 1.25em 1.25em 0 0;
+    }
+}
+
+@media screen and (max-width: 980px) {
+
+    .rtl .uix-products-container {
+        margin: -2.5em -2.5em 0 0;
+    }
+
+    .rtl .uix-products-container .uix-products-item ,
+	.rtl .uix-products-container.small .uix-products-item,
+	.rtl .uix-products-container.large .uix-products-item {
+        margin: 2.5em 2.5em 0 0;
+    }
+}
+
+@media screen and (max-width: 736px) {
+
+    .rtl .uix-products-container {
+        margin: -1.25em -1.25em 0 0;
+    }
+
+    .rtl .uix-products-container .uix-products-item,
+	.rtl .uix-products-container.small .uix-products-item,
+	.rtl .uix-products-container.large .uix-products-item {
+        margin: 1.25em 1.25em 0 0;
+    }
+}
+
+/* ====================================================== 
+   2. Products Categories            
+/* ====================================================== */
+.rtl .uix-products-cat-list li {
+    margin-right: auto;
+	margin-left: 20px;
+}
+
+.rtl .uix-products-cat-list li ul.children {
+    float: right;
+}
+
+
+/* ====================================================== 
+   3. Products Pagination             
+/* ====================================================== */
+.rtl .uix-products-pagination-single ul .previous {
+    float: right;
+}
+
+.rtl .uix-products-pagination-single ul .next {
+    float: left;
+}
+
+
+/* ====================================================== 
+   4. Products for Widget          
+/* ====================================================== */
+.rtl .uix-products-widget .uix-products-recent-item .item-thumb {
+    float: right;
+    margin-right: auto;
+    margin-left: 1em;
+    text-align: right;
+}
+
+.rtl .uix-products-widget .uix-products-recent-item .item-info {
+    float: right;
+}
+
+
+/* ====================================================== 
+   5. Custom Single Page   
+/* ====================================================== */
+
+.rtl .uix-products-single-main {
+    float: right;
+}
+
+.rtl .uix-products-single-side {
+    float: left;
+}
+
+
+.rtl .uix-products-single-side .title:after {
+	padding-left: auto;
+	padding-right: 2px;
+	
+}
+
+
+/* ====================================================== 
+   6. Custom Slideshow      
+/* ====================================================== */
+/*
+
+	
+	TABLE OF CONTENTS (RTL)
+	---------------------------
+	
+     1. Initialize the slider style
+     2. Pagination dots
+     3. Next/Prev buttons
+
+*/
+/*
+ ---------------------------
+ 1. Initialize the slider style
+ ---------------------------
+ */
+.rtl .uix-products-slideshow .uix-products-slideshow__inner .uix-products-slideshow__item {
+    left: auto;
+    right: 0;
+}
+
+/*
+ ---------------------------
+ 2. Pagination dots
+ ---------------------------
+ */
+.rtl .uix-products-slideshow__pagination ul {
+    left: auto;
+    right: 0;
+}
+
+/*
+ ---------------------------
+ 3. Next/Prev buttons
+ ---------------------------
+ */
+.rtl .uix-products-slideshow__arrows .uix-products-slideshow__arrows--prev {
+    left: auto;
+    right: 15px;
+}
+
+.rtl .uix-products-slideshow__arrows .uix-products-slideshow__arrows--next {
+    right: auto;
+    left: 15px;
+    text-align: left;
+}
+
+
